@@ -1,0 +1,4 @@
+select *from course 
+
+insert into course (id, name, author)
+values(1,'learn AWS' , ' in28minutes');
