@@ -1,7 +1,11 @@
 package com.yashedu.springboot.learnspringboot.course;
 
-public class Course {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+@Entity
+public class Course {
+@Id
 	private int id;
 	private String courseName;
 	private String author;
