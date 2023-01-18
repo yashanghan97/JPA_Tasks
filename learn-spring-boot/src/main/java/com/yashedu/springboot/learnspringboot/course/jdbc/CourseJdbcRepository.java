@@ -1,6 +1,7 @@
 package com.yashedu.springboot.learnspringboot.course.jdbc;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -27,5 +28,15 @@ public class CourseJdbcRepository {
 
 	public void deletByID(long id) {
 		springJdbcTemplate.update(DELETE_QUERY, id);
+	}
+	
+	public static String SELECT_QUERY = 
+			"""
+			select * from course 
+			where id = ?
+			""";
+
+	public Course findById(long id) {
+		return springJdbcTemplate.queryForObject(SELECT_QUERY, new BeanPropertyRowMapper<>(Course.class), id);
 	}
 }
